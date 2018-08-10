@@ -9,6 +9,12 @@ import { RegisterPageComponent } from './componentes/register-page/register-page
 import { LoginPageComponent } from './componentes/login-page/login-page.component';
 import { DesfibriladorComponent } from './componentes/desfibrilador/desfibrilador.component';
 import { NotFoundPageComponent } from './componentes/not-found-page/not-found-page.component';
+import { CrodesfibrilarComponent } from './componentes/crodesfibrilar/crodesfibrilar.component';
+import { ForNumberPipe } from './for-number.pipe';
+import { CroAdrenalinaComponent } from './componentes/cro-adrenalina/cro-adrenalina.component';
+import { CroAmiodaronaComponent } from './componentes/cro-amiodarona/cro-amiodarona.component';
+import { CroAtropinaComponent } from './componentes/cro-atropina/cro-atropina.component';
+import { FraccionCTComponent } from './componentes/fraccion-c-t/fraccion-c-t.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,13 @@ import { NotFoundPageComponent } from './componentes/not-found-page/not-found-pa
     RegisterPageComponent,
     LoginPageComponent,
     DesfibriladorComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    CrodesfibrilarComponent,
+    ForNumberPipe,
+    CroAdrenalinaComponent,
+    CroAmiodaronaComponent,
+    CroAtropinaComponent,
+    FraccionCTComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,15 @@
+.col-centrada{
+    margin: 0 auto; 
+}
+
+.fondoRojo{
+    background-color: red;
+}
+
+.fondoVerde{
+    background-color: green;
+}
+
+hr{
+    border-color:  green;
+}

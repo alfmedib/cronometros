@@ -1,3 +1,45 @@
-<p>
-  desfibrilador works!
-</p>
+
+<div class="container mt-3"> 
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class = "text-success">CRONÓMETROS</h2>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-outline-success" (click) = "mostrarDesfibrilacion();">{{titleDesfibrilacion}}</button>
+        </div>    
+        <div class="col-md-2">
+            <button type="button" class="btn btn-outline-success ml-2" (click) = "mostrarAdrenalina();">{{titleAdrenalina}}</button>
+        </div>    
+            <div class="col-md-2">
+        <button type="button" class="btn btn-outline-success ml-2" (click) = "mostrarAmiodarona();">{{titleAmiodarona}}</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-outline-success ml-2" (click) = "mostrarAtropina();">{{titleAtropina}}</button>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-outline-success ml-2" (click) = "mostrarFraccion();">{{titleFraccion}}</button>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-mx-3 mr-1">
+            <app-crodesfibrilar *ngIf = "booleaDesfibrinacion"></app-crodesfibrilar>
+        </div>
+        <div class="col-mx-3 mr-1">  
+            <app-cro-adrenalina *ngIf = "booleaAdrenalina"></app-cro-adrenalina>
+        </div>  
+
+        <div class="col-mx-3 mr-1">
+            <app-cro-amiodarona *ngIf = "booleanAmiodarona"></app-cro-amiodarona>
+         </div> 
+         
+         <div class="col-mx-3 mr-1">
+            <app-cro-atropina *ngIf = "booleanAtropina"></app-cro-atropina>
+        </div>
+
+        <div class="col-mx-8" *ngIf = "booleanFraccion">
+            <app-fraccion-c-t></app-fraccion-c-t>
+        </div>
+    </div>
+
+</div>
