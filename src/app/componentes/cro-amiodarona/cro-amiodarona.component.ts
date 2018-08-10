@@ -54,7 +54,7 @@ export class CroAmiodaronaComponent implements OnInit {
       if(this.cont == undefined){
         this.cont = setInterval(() => {
           this.segundos++;
-          this.porcentaje += 0.83333; 
+          this.porcentaje += 0.55555; 
           if(this.porcentaje >= 100){
             this.porcentaje=0;
           }
