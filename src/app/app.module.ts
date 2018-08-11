@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { CroAdrenalinaComponent } from './componentes/cro-adrenalina/cro-adrenal
 import { CroAmiodaronaComponent } from './componentes/cro-amiodarona/cro-amiodarona.component';
 import { CroAtropinaComponent } from './componentes/cro-atropina/cro-atropina.component';
 import { FraccionCTComponent } from './componentes/fraccion-c-t/fraccion-c-t.component';
+import { fromEventPattern } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,13 @@ import { FraccionCTComponent } from './componentes/fraccion-c-t/fraccion-c-t.com
     CroAmiodaronaComponent,
     CroAtropinaComponent,
     FraccionCTComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
