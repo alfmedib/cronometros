@@ -1,3 +1,90 @@
 .slider{
     height: 100vh;
 }
+
+header {
+    background-color: #2c3c50;
+    color: #fff;
+}
+
+.main {
+    background-color: #f2f2f2;
+}
+
+.color1 {
+    background-color: #34495e;
+    color: #fff;
+}
+
+aside {
+    background-color: #c0392b;
+    color: fff;
+}
+
+footer {
+    background-color: #2c3c50;
+    color: #fff;
+}
+
+
+/*--header -- */
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.jumbotron {
+    background: #428bca;
+    color: #fff;
+    padding: 10px 5px;
+}
+
+.jumbotron .titulo-blog {
+    font-size: 50px;
+}
+
+
+/* --- Post --- */
+
+.main {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.post {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #999;
+}
+
+.post .post-title a {
+    color: #333;
+}
+
+.post .thumb {
+    margin-right: 10px;
+    width: 40%;
+}
+
+.post .thumb img {
+    width: 100%
+}
+
+.post .contenedor-botones {
+    width: 100%;
+}
+
+aside {
+    background: rgba(240, 240, 240, 0.3);
+}
+
+
+/*--- Media Querie---*/
+
+@media screen and (max-width: 768px) {
+    .post .thumb {
+        width: 100%;
+        margin-bottom: 20px;
+        margin-right: 0;
+    }
+}

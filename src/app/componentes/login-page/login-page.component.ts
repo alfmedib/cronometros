@@ -17,7 +17,7 @@ export class LoginPageComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.pf.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(6)]]
 
     });
   }
