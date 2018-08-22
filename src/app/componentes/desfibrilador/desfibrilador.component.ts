@@ -13,11 +13,11 @@ export class DesfibriladorComponent implements OnInit {
   titleAtropina: string = 'Mostrar Atropina';
   titleFraccion: string = 'Mostrar Fraccion Compresión';
 
-  booleaDesfibrinacion: boolean = false;
-  booleaAdrenalina: boolean = false;
-  booleanAmiodarona: boolean = false;
-  booleanAtropina: boolean = false;
-  booleanFraccion: boolean = false;
+  booleaDesfibrinacion: boolean = true;
+  booleaAdrenalina: boolean = true;
+  booleanAmiodarona: boolean = true;
+  booleanAtropina: boolean = true;
+  booleanFraccion: boolean = true;
 
 
   constructor() { }
@@ -27,50 +27,50 @@ export class DesfibriladorComponent implements OnInit {
 
   mostrarDesfibrilacion(){
     if (this.booleaDesfibrinacion){
-      this.titleDesfibrilacion = 'Mostrar desfibrilación';
+      this.titleDesfibrilacion = 'Ocultar desfibrilación';
     }
     else{
-      this.titleDesfibrilacion = 'Ocultar desfibrilación';
+      this.titleDesfibrilacion = 'Mostrar desfibrilación';
     }
     return this.booleaDesfibrinacion = !this.booleaDesfibrinacion;
   }
 
   mostrarAdrenalina(){
     if (this.booleaAdrenalina){
-      this.titleAdrenalina = 'Mostrar Adrenalina';
+      this.titleAdrenalina = 'Ocultar Adrenalina';
     }
     else{
-      this.titleAdrenalina = 'Ocultar Adrenalina';
+      this.titleAdrenalina = 'Mostrar Adrenalina';
     }
     return this.booleaAdrenalina = !this.booleaAdrenalina;
   }
 
   mostrarAmiodarona(){
     if (this.booleanAmiodarona){
-      this.titleAmiodarona = 'Mostrar Amiodarona';
+      this.titleAmiodarona = 'Ocultar Amiodarona';
     }
     else{
-      this.titleAmiodarona = 'Ocultar Amiodarona';
+      this.titleAmiodarona = 'Mostrar Amiodarona';
     }
     return this.booleanAmiodarona = !this.booleanAmiodarona;
   }
 
   mostrarAtropina(){
     if (this.booleanAtropina){
-      this.titleAtropina = 'Mostrar Atropina';
+      this.titleAtropina = 'Ocultar Atropina';
     }
     else{
-      this.titleAtropina = 'Ocultar Atropina';
+      this.titleAtropina = 'Mostrar Atropina';
     }
     return this.booleanAtropina = !this.booleanAtropina;
   }
 
   mostrarFraccion(){
     if (this.booleanFraccion){
-      this.titleFraccion = 'Mostrar Fracción Contración';
+      this.titleFraccion = 'Ocultar Fracción Contración';
     }
     else{
-      this.titleFraccion = 'Ocultar Fracción Contración';
+      this.titleFraccion = 'Mostrar Fracción Contración';
     }
     return this.booleanFraccion = !this.booleanFraccion;
   }

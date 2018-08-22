@@ -23,21 +23,21 @@
 
     <div class="row mt-3">
         <div class="col-mx-3 mr-1">
-            <app-crodesfibrilar *ngIf = "booleaDesfibrinacion"></app-crodesfibrilar>
+            <app-crodesfibrilar [hidden] = "booleaDesfibrinacion"></app-crodesfibrilar>
         </div>
         <div class="col-mx-3 mr-1">  
-            <app-cro-adrenalina *ngIf = "booleaAdrenalina"></app-cro-adrenalina>
+            <app-cro-adrenalina [hidden] = "booleaAdrenalina"></app-cro-adrenalina>
         </div>  
 
         <div class="col-mx-3 mr-1">
-            <app-cro-amiodarona *ngIf = "booleanAmiodarona"></app-cro-amiodarona>
+            <app-cro-amiodarona [hidden] = "booleanAmiodarona"></app-cro-amiodarona>
          </div> 
          
          <div class="col-mx-3 mr-1">
-            <app-cro-atropina *ngIf = "booleanAtropina"></app-cro-atropina>
+            <app-cro-atropina [hidden] = "booleanAtropina"></app-cro-atropina>
         </div>
 
-        <div class="col-mx-8" *ngIf = "booleanFraccion">
+        <div class="col-mx-8" [hidden] = "booleanFraccion">
             <app-fraccion-c-t></app-fraccion-c-t>
         </div>
     </div>
