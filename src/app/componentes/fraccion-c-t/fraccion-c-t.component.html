@@ -6,18 +6,18 @@
        
         <div class="col-md-12">
         <h6>DURACIÓN REANIMACION CARDIOPULMONAR</h6>
-        <h1 class="card text-center border-success">{{ cronoCompresiones.horas | forNumber }} : {{ cronoCompresiones.minutos | forNumber }} : {{ cronoCompresiones.segundos | forNumber }}</h1>
+        <h1 class="card text-center border-success">{{ cronoCompresiones.getHoras() | forNumber }} : {{ cronoCompresiones.getMinutos() | forNumber }} : {{ cronoCompresiones.getSegundos() | forNumber }}</h1>
          </div>
         
 
           <div class="col-md-6">
             <h6>DURACIÓN DE LAS COMPRESIONES</h6>
-            <h1 class="card text-center border-success">{{ cronoRCP.horas | forNumber }} : {{ cronoRCP.minutos | forNumber }} : {{ cronoRCP.segundos | forNumber }}</h1>
+            <h1 class="card text-center border-success">{{ cronoRCP.getHoras() | forNumber }} : {{ cronoRCP.getMinutos() | forNumber }} : {{ cronoRCP.getSegundos() | forNumber }}</h1>
           </div>
  
           <div class="col-md-6">
               <h6>DURACIÓN DE LAS INTERRUPCIONES</h6>
-              <h1 class="card text-center border-success">{{cronoPausa.horas | forNumber }} : {{cronoPausa.minutos | forNumber }} : {{cronoPausa.segundos | forNumber }}</h1>
+              <h1 class="card text-center border-success">{{cronoPausa.getHoras() | forNumber }} : {{cronoPausa.getMinutos() | forNumber }} : {{cronoPausa.getSegundos() | forNumber }}</h1>
           </div>
           
           <div class="col-md-12 col-centrada">

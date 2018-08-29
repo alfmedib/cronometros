@@ -5,7 +5,7 @@ export class Reloj {
     private horas: number;
     private contSeg:number;
             
-    getStart(): void {
+    public getStart(): void {
       
       this.segundos++;
       this.contSeg ++;
