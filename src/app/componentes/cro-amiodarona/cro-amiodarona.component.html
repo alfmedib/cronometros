@@ -1,18 +1,18 @@
 <div class="card border-success mb-3" style="max-width: 21rem;">
-  <h1 class="text-success mt-2 ml-4 text-center">AMIODARONA</h1>
-  <div class="card-body col-centrada">
-      <h1 class="card text-center border-success">{{hora | forNumber }} : {{minutos | forNumber }} : {{segundos | forNumber }}</h1>
-      <div class="progress mb-3">
-        <div [ngStyle] = "{ width:setwidth()}" [ngClass] = "{fondoVerde: porcentaje < 50, fondoRojo : porcentaje >= 50}" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <button type="button" class="btn btn-outline-success btn-sm" (click) = "start()">Empezar</button>
-      <button type="button" class="btn btn-outline-success btn-sm ml-1" (click) = "stop();">Parar</button>
-      <button type="button" class="btn btn-outline-success btn-sm ml-1" (click) = "continuar();">Continuar</button>
-      <button type="button" class="btn btn-outline-success btn-sm ml-1" (click) = "reiniciar()">Riniciar</button>
-      <hr>
-      <button class="btn btn-success" href="#" role="button" (click)="contAmiodarona()">Contador</button>
-      <h4 class="card-text">Dosis No. {{contador}}</h4>
-      <p>{{message}}</p>
-  </div>
-  
+    <h1 class="text-success mt-2 ml-4 text-center">AMIODARONA</h1>
+    <div class="card-body col-centrada">
+        <h1 class="card text-center border-success">{{relojAmiodarona.horas | forNumber }} : {{ relojAmiodarona.minutos | forNumber }} : {{relojAmiodarona.segundos | forNumber }}</h1>
+        
+        <div class="progress mb-3">
+          <div [ngStyle] = "{ width:setwidth()}" [ngClass] = "{fondoVerde: porcentaje < 50, fondoRojo : porcentaje >= 50}" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <button type="button" class="btn btn-outline-success" (click) = "start()"><b>ADMINISTRAR</b>&nbsp; <span class="badge fondoVerde fontSize color">{{contador}}</span></button>
+        <button type="button" class="btn btn-outline-success  ml-1" (click) = "stop();">Fin</button>
+        <button type="button" class="btn btn-outline-success  ml-1" (click) = "reiniciar()">Reiniciar</button>
+        <hr>
+        <h4 class="card-text">Dosis No. {{contador}}</h4>
+        <p class="alert alert-success">{{message}}</p>
+        
+    </div>
+    
 </div>

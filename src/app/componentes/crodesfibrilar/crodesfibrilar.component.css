@@ -13,3 +13,11 @@
 hr{
     border-color:  green;
 }
+
+.fontSize{
+ font-size: 12px;
+}
+
+.color{
+    color: white;
+}

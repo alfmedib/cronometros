@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Reloj } from '../../modelo/reloj';
 
 @Component({
   selector: 'app-fraccion-c-t',
@@ -7,173 +8,100 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FraccionCTComponent implements OnInit {
 
-  public hora: number = 0;
-  public minutos: number = 0;
-  public segundos: number = 0;
-  public contador: number = 0; // este cuenta las desfibrilaciones
-  public cont:any; // contador del reloj
-  public message: string = '';
-  public porcentaje:number = 0;
-  public seg: number = 0;
+    cronoCompresiones: Reloj = new Reloj();
+    cronoRCP: Reloj = new Reloj();
+    cronoPausa: Reloj = new Reloj();
 
-  public horaInterrupcion: number = 0;
-  public minutosInterrupcion: number = 0;
-  public segundosInterrupcion: number = 0;
-  public contadorInterrupcion: number = 0; // este cuenta las desfibrilaciones
-  public contInterrupcion:any; // contador del reloj
-  public segInterrupcion: number = 0;
-  
+    buttonLabel: string;
 
-  constructor() { }
+    cronoCompresion:any;
+    cronoRcp:any;
+    cronoParar: any;
 
-  ngOnInit() {
-  }
+    porcentaje: any;
 
-  start(){
-    if(this.cont == undefined){
-      this.cont = setInterval(() => {
-        this.segundos++;
-        this.seg +=  this.segundos;
-        if(this.seg > 0){
-          this.porcentaje = ((this.seg - this.segInterrupcion) * 100) / this.seg; 
-        }
-        if(this.segundos == 60){
-          this.segundos = 0
-          this.minutos++;
-          if(this.minutos == 60){
-            this.minutos = 0;
-            this.hora++;
-            if(this.hora == 24){
-              this.hora = 0;
-            }
-          }
-        }
-        
-      },1000);
+    isPausa:boolean = false;
+    isRCP = true
+    isCompresiones = false;
+    
+    constructor() { 
+      this.cronoRCP.resetTimer();
+      this.cronoCompresiones.resetTimer();
+      this.cronoPausa.resetTimer();
     }
+
+    ngOnInit() {
+    }
+
+    inicioRCP(){
+    clearInterval(this.cronoCompresion);
+    clearInterval(this.cronoRcp);
+    clearInterval(this.cronoParar);
+    this.cronoCompresion = setInterval(() => this.cronoCompresiones.getStart(), 1000);
+    this.cronoParar = setInterval(() => this.cronoPausa.getStart(), 1000);
+
+    }
+    
+  start(){
+    
+    clearInterval(this.cronoCompresion);
+    clearInterval(this.cronoRcp);
+    clearInterval(this.cronoParar);
+    
+    this.cronoRcp = setInterval(() => this.cronoRCP.getStart(), 1000);
+    this.cronoCompresion = setInterval(() => {
+      this.cronoCompresiones.getStart();
+      this.porcentaje = ((this.cronoRCP.getContSeg() * 100) / this.cronoCompresiones.getContSeg());
+    }, 1000);
   }
 
   stop(){
-    clearInterval(this.cont);
-    this.cont = null;
+  clearInterval(this.cronoParar);
+  clearInterval(this.cronoRcp);
+  this.cronoParar = setInterval(() => this.cronoPausa.getStart(), 1000);
   }
 
-  continuar(){
-    if(this.hora !=0 || this.minutos !=0 || this.segundos != 0){
-      if(this.cont == undefined){
-        this.cont = setInterval(() => {
-          this.segundos++;
-          this.seg +=  this.segundos;
+  finalizar(){
 
-          if(this.seg > 0)
-          this.porcentaje = ((this.seg - this.segInterrupcion) * 100) / this.seg; 
-          
-          if(this.segundos == 60){
-            this.segundos = 0
-            this.minutos++;
-            if(this.minutos == 60){
-              this.minutos = 0;
-              this.hora++;
-              if(this.hora == 24){
-                this.hora = 0;
-              }
-            }
-          }
-          
-        },1000);
-      }
-    }
-
-  }
-
+  clearInterval(this.cronoParar);
+  clearInterval(this.cronoRcp);
+  clearInterval(this.cronoCompresion);
+  this.isPausa = false;
+  this.isRCP = false;
+  this.isCompresiones = true;
   
+  }
+
   reiniciar(){
 
-    clearInterval(this.cont);
-    this.cont = null;
-    this.contador = 0;
-    this.hora = 0;
-    this.minutos = 0;
-    this.segundos = 0;
-    this.seg = 0;
+    clearInterval(this.cronoParar);
+    clearInterval(this.cronoRcp);
+    clearInterval(this.cronoCompresion);
+    this.isPausa = false;
+    this.isCompresiones = false;
+    this.isRCP = true;
+
+    this.cronoRCP.resetTimer();
+    this.cronoCompresiones.resetTimer();
+    this.cronoPausa.resetTimer();
     this.porcentaje = 0;
-    this.message = '';
-  }
-
-
-  startInterrupcion(){
-    if(this.contInterrupcion == undefined){
-      this.contInterrupcion = setInterval(() => {
-        this.segundosInterrupcion++;
-        this.segInterrupcion +=  this.segundosInterrupcion;
-
-        if(this.seg > 0){
-          this.porcentaje = ((this.seg - this.segInterrupcion) * 100) / this.seg; 
-        }
-
-        if(this.segundosInterrupcion == 60){
-          this.segundosInterrupcion = 0
-          this.minutosInterrupcion++;
-          if(this.minutosInterrupcion == 60){
-            this.minutosInterrupcion = 0;
-            this.horaInterrupcion++;
-            if(this.horaInterrupcion == 24){
-              this.horaInterrupcion = 0;
-            }
-          }
-        }
-        
-      },1000);
-    }
-  }
-
-  stopInterrupcion(){
-    clearInterval(this.contInterrupcion);
-    this.contInterrupcion = null;
-  }
-
-  continuarInterrupcion(){
-    if(this.horaInterrupcion !=0 || this.minutosInterrupcion !=0 || this.segundosInterrupcion != 0){
-      if(this.contInterrupcion == undefined){
-        this.contInterrupcion = setInterval(() => {
-          this.segundosInterrupcion++;
-          this.segInterrupcion +=  this.segundosInterrupcion;
-
-          if(this.seg > 0){
-            this.porcentaje = ((this.seg - this.segInterrupcion) * 100) / this.seg; 
-          }
-          
-          if(this.segundosInterrupcion == 60){
-            this.segundosInterrupcion = 0
-            this.minutosInterrupcion++;
-            if(this.minutosInterrupcion == 60){
-              this.minutosInterrupcion = 0;
-              this.horaInterrupcion++;
-              if(this.horaInterrupcion == 24){
-                this.horaInterrupcion = 0;
-              }
-            }
-          }
-          
-        },1000);
-      }
-    }
-  }
-
-  reiniciarInterrupcion(){
-
-    clearInterval(this.contInterrupcion);
-    this.contInterrupcion = null;
-    this.contadorInterrupcion = 0;
-    this.horaInterrupcion = 0;
-    this.minutosInterrupcion = 0;
-    this.segundosInterrupcion = 0;
-    this.segInterrupcion = 0;
-    this.porcentaje = 0;
-    this.message = '';
   }
 
   setwidth(){
     return this.porcentaje + '%';
+  }
+
+  pausa(): boolean{
+    this.isRCP = false;
+    if(this.isCompresiones){
+      this.isPausa = true;
+      this.isCompresiones = false;
+      return this.isPausa;
+    }
+    else{
+      this.isPausa = false;
+      this.isCompresiones = true;
+    }
+    return this.isCompresiones;
   }
 }

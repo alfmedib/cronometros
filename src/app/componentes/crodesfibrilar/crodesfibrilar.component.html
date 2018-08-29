@@ -6,14 +6,12 @@
           <div class="progress mb-3">
             <div [ngStyle] = "{ width:setwidth()}" [ngClass] = "{fondoVerde: porcentaje < 50, fondoRojo : porcentaje >= 50}" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-          <button type="button" class="btn btn-outline-success btn-sm" (click) = "start()">Empezar</button>
-          <button type="button" class="btn btn-outline-success btn-sm ml-1" (click) = "stop();">Parar</button>
-          <button type="button" class="btn btn-outline-success btn-sm ml-1" (click) = "continuar();">Continuar</button>
-          <button type="button" class="btn btn-outline-success btn-sm ml-1" (click) = "reiniciar()">Riniciar</button>
+          <button type="button" class="btn btn-outline-success ml-1" (click) = "start();contDesfibrilacion()"><b>DESFIBRILA</b> &nbsp;<span class="badge fondoVerde fontSize color">{{contador}}</span></button>
+          <button type="button" class="btn btn-outline-success ml-1" (click) = "stop();">FIN</button>
+          <button type="button" class="btn btn-outline-success ml-1" (click) = "reiniciar()">Riniciar</button>
           <hr>
-          <button class="btn btn-success" href="#" role="button" (click)="contDesfibrilacion()">Contador</button>
           <h4 class="card-text">Desfibrilación No. {{contador}}</h4>
-          <p>{{message}}</p>
+          <p class="alert alert-success">{{message}}</p>
       </div>
       
   </div>

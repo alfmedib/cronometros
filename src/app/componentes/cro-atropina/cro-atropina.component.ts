@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Reloj} from '../../modelo/reloj'
 
 @Component({
   selector: 'app-cro-atropina',
@@ -7,101 +8,54 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CroAtropinaComponent implements OnInit {
 
-  public hora: number = 0;
-  public minutos: number = 0;
-  public segundos: number = 0;
-  public contador: number = 0; // este cuenta las desfibrilaciones
-  public cont:any; // contador del reloj
   public message: string = '';
   public porcentaje:number = 0;
+  public relojAtropina: Reloj = new Reloj();
+  public atropina: any;
+  public contador: number = 0;
 
-  constructor() { }
+ 
+  constructor() { 
+    this.relojAtropina.resetTimer();
+  }
 
   ngOnInit() {
   }
 
   start(){
-    if(this.cont == undefined){
-      this.cont = setInterval(() => {
-        this.segundos++;
-        this.porcentaje += 0.55555; 
+    clearInterval(this.atropina);
+    this.atropina = setInterval(() => {
+
+      this.relojAtropina.getStart();
+      this.porcentaje += 0.55555; 
         if(this.porcentaje >= 100){
           this.porcentaje=0;
         }
-        if(this.segundos == 60){
-          this.segundos = 0
-          this.minutos++;
-          if(this.minutos == 60){
-            this.minutos = 0;
-            this.hora++;
-            if(this.hora == 24){
-              this.hora = 0;
-            }
-          }
-        }
-        
-      },1000);
+    }, 1000);
+
+    this.contador++;
+    if(this.contador == 0){
+      this.message = '';
+    }
+
+    if(this.contador >= 6){
+      this.message = 'Considere MARCAPASO TRANSCUTÁNEO o Dopamina o Adrenlina';
+    }
+
+    if(this.contador < 6){
+      this.message = 'Observe evolución';
     }
   }
 
   stop(){
-    clearInterval(this.cont);
-    this.cont = null;
-  }
-
-  continuar(){
-    if(this.hora !=0 || this.minutos !=0 || this.segundos != 0){
-      if(this.cont == undefined){
-        this.cont = setInterval(() => {
-          this.segundos++;
-          this.porcentaje += 0.55555; 
-          if(this.porcentaje >= 100){
-            this.porcentaje=0;
-          }
-          if(this.segundos == 60){
-            this.segundos = 0
-            this.minutos++;
-            if(this.minutos == 60){
-              this.minutos = 0;
-              this.hora++;
-              if(this.hora == 24){
-                this.hora = 0;
-              }
-            }
-          }
-          
-        },1000);
-    }
-    }
-
-  }
-
-  contAtropina(){
-    this.contador++;
-    if(this.contador == 0 || this.contador > 3){
-      this.message = '';
-    }
-
-    if(this.contador == 6){
-      this.message = 'Considere: Marcapaso, Dopamina o Adrenalina o NorAdrenalina';
-    }
-
-    if(this.contador > 6){
-      this.message = 'El número de dosis máximos es de 6';
-    }
-
+    clearInterval(this.atropina);
   }
 
   reiniciar(){
-
-    clearInterval(this.cont);
-    this.cont = null;
-    this.contador = 0;
-    this.hora = 0;
-    this.minutos = 0;
-    this.segundos = 0;
+    clearInterval(this.atropina);
+    this.relojAtropina.resetTimer();
     this.porcentaje = 0;
-    this.message = '';
+    this.contador = 0;
   }
 
   setwidth(){

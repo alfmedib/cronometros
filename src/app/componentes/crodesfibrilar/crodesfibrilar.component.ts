@@ -29,8 +29,12 @@ export class CrodesfibrilarComponent implements OnInit {
   }
 
   start(){
+      /*this.segundos = 0;
+      this.minutos = 0;
+      this.hora = 0;
+      this.porcentaje = 0;*/
     if(this.cont == undefined){
-      this.cont = setInterval(() => {
+     this.cont = setInterval(() => {
         this.segundos++;
         this.porcentaje += 0.83333; 
         if(this.porcentaje >= 100){
@@ -48,7 +52,8 @@ export class CrodesfibrilarComponent implements OnInit {
           }
         }
         
-      },1000);
+      },1000
+  );
     }
   }
 

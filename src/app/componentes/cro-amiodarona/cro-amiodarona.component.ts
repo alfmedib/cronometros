@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Reloj } from '../../modelo/reloj'
 
 @Component({
   selector: 'app-cro-amiodarona',
@@ -7,76 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CroAmiodaronaComponent implements OnInit {
 
-  public hora: number = 0;
-  public minutos: number = 0;
-  public segundos: number = 0;
-  public contador: number = 0; // este cuenta las desfibrilaciones
-  public cont:any; // contador del reloj
   public message: string = '';
   public porcentaje:number = 0;
+  public relojAmiodarona: Reloj = new Reloj();
+  public amiodarona: any;
+  public contador: number = 0;
 
-  constructor() { }
+ 
+  constructor() { 
+    this.relojAmiodarona.resetTimer();
+  }
 
   ngOnInit() {
   }
 
   start(){
-    if(this.cont == undefined){
-      this.cont = setInterval(() => {
-        this.segundos++;
-        this.porcentaje += 0.55555; 
+    clearInterval(this.amiodarona);
+    this.amiodarona = setInterval(() => {
+
+      this.relojAmiodarona.getStart();
+      this.porcentaje += 0.55555; 
         if(this.porcentaje >= 100){
           this.porcentaje=0;
         }
-        if(this.segundos == 60){
-          this.segundos = 0
-          this.minutos++;
-          if(this.minutos == 60){
-            this.minutos = 0;
-            this.hora++;
-            if(this.hora == 24){
-              this.hora = 0;
-            }
-          }
-        }
-        
-      },1000);
-    }
-  }
+    }, 1000);
 
-  stop(){
-    clearInterval(this.cont);
-    this.cont = null;
-  }
-
-  continuar(){
-    if(this.hora !=0 || this.minutos !=0 || this.segundos != 0){
-      if(this.cont == undefined){
-        this.cont = setInterval(() => {
-          this.segundos++;
-          this.porcentaje += 0.55555; 
-          if(this.porcentaje >= 100){
-            this.porcentaje=0;
-          }
-          if(this.segundos == 60){
-            this.segundos = 0
-            this.minutos++;
-            if(this.minutos == 60){
-              this.minutos = 0;
-              this.hora++;
-              if(this.hora == 24){
-                this.hora = 0;
-              }
-            }
-          }
-          
-        },1000);
-    }
-    }
-
-  }
-
-  contAmiodarona(){
     this.contador++;
     if(this.contador == 0 || this.contador > 3){
       this.message = '';
@@ -85,19 +41,17 @@ export class CroAmiodaronaComponent implements OnInit {
     if(this.contador == 1){
       this.message = 'Tratar las causas reversibles';
     }
+  }
 
+  stop(){
+    clearInterval(this.amiodarona);
   }
 
   reiniciar(){
-
-    clearInterval(this.cont);
-    this.cont = null;
-    this.contador = 0;
-    this.hora = 0;
-    this.minutos = 0;
-    this.segundos = 0;
+    clearInterval(this.amiodarona);
+    this.relojAmiodarona.resetTimer();
     this.porcentaje = 0;
-    this.message = '';
+    this.contador = 0;
   }
 
   setwidth(){
