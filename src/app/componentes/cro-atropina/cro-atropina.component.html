@@ -1,7 +1,7 @@
 <div class="card border-success mb-3" style="max-width: 21rem;">
     <h1 class="text-success mt-2 ml-4 text-center">ATROPINA</h1>
     <div class="card-body col-centrada">
-        <h1 class="card text-center border-success">{{relojAtropina.horas | forNumber }} : {{ relojAtropina.minutos | forNumber }} : {{relojAtropina.segundos | forNumber }}</h1>
+        <h1 class="card text-center border-success">{{relojAtropina.getHoras() | forNumber }} : {{ relojAtropina.getMinutos() | forNumber }} : {{relojAtropina.getSegundos() | forNumber }}</h1>
         
         <div class="progress mb-3">
           <div [ngStyle] = "{ width:setwidth()}" [ngClass] = "{fondoVerde: porcentaje < 50, fondoRojo : porcentaje >= 50}" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
@@ -11,7 +11,7 @@
         <button type="button" class="btn btn-outline-success  ml-1" (click) = "reiniciar()">Reiniciar</button>
         <hr>
         <h4 class="card-text">Dosis No. {{contador}}</h4>
-        <p>{{message}}</p>
+        <p class="alert alert-success">{{message}}</p>
         
     </div>
     
