@@ -56,6 +56,7 @@ export class CroAtropinaComponent implements OnInit {
     this.relojAtropina.resetTimer();
     this.porcentaje = 0;
     this.contador = 0;
+    this.message = '';
   }
 
   setwidth(){

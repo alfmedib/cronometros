@@ -60,6 +60,7 @@ export class CrodesfibrilarComponent implements OnInit {
     this.relojDesfibrilador.resetTimer();
     this.porcentaje = 0;
     this.contador = 0;
+    this.message = '';
   }
 
   setwidth(){

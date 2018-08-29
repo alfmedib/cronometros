@@ -52,6 +52,7 @@ export class CroAmiodaronaComponent implements OnInit {
     this.relojAmiodarona.resetTimer();
     this.porcentaje = 0;
     this.contador = 0;
+    this.message = '';
   }
 
   setwidth(){

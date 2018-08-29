@@ -56,6 +56,7 @@ export class CroAdrenalinaComponent implements OnInit {
     this.relojAdrenalina.resetTimer();
     this.porcentaje = 0;
     this.contador = 0;
+    this.message = '';
   }
 
   setwidth(){
